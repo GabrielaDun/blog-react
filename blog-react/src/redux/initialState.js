@@ -8,7 +8,7 @@ const initialState = {
             shortDescription: 'This guide will let you swim like a baby dolphin!',
             content: 'Main content of the article',
             publishedDate: '01-12-2021',
-            author: 'Grace Google'
+            author: 'Diana Dive'
         },
         {
             id: '2',

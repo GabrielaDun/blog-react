@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import { Button} from "react-bootstrap";
+//import { Link } from 'react-router-dom';
+import Button from '../../features/Button/Button';
 import Posts from '../../features/Posts/Posts';
 import styles from './Home.module.scss';
+import { Link} from 'react-router-dom';
 
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
         <div>
             <div className={styles.homeContainer}>
                 <h3>All posts</h3>
-                <Button size="lg" variant="outline-info" as={Link} to='/post/add'>Add post</Button>
+                <Link className={styles.button}to={'/post/add'}><Button>Add post</Button></Link>
             </div>
             <Posts />
         </div>

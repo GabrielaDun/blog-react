@@ -1,7 +1,12 @@
-import { Link } from 'react-router-dom';
-import styles from  './PostBox.module.scss'
+///import { Link } from 'react-router-dom';
+import styles from  './PostBox.module.scss';
+import Button from '../Button/Button';
+import { Link} from 'react-router-dom';
+
+
 
 const PostBox = (props) => {
+    console.log(props);
     return (
         <div>
             <h4>{props.title}</h4>
@@ -12,7 +17,7 @@ const PostBox = (props) => {
             <p>Author: {props.author}</p>
             <p>Published: {props.publishedDate}</p>
             <p>{props.shortDescription}</p>
-            <Link to={'/post/'+ props.id}>Read more</Link>
+            <Link className={styles.button}to={'/post/'+ props.id}><Button>Read more</Button></Link>
         </div>
     )
 
