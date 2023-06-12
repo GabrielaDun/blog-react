@@ -1,0 +1,22 @@
+.navbar {
+    background-color: grey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .blogName {
+        padding: 10px;
+    }
+    .links {
+        padding-top: 10px;
+        .link {
+            text-decoration: none;
+            padding: 10px;
+            color: white;
+        }
+    }
+}
+
