@@ -1,12 +1,22 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useDispatch } from 'react-redux';
+import { deletePost } from '../../../redux/postsRedux';
 
-function NewModal() {
+const NewModal = (props)  => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const dispatch = useDispatch();
+
+  const handleDelete = e => {
+    e.preventDefault();
+
+    const cardId = props.id;
+    dispatch(deletePost(cardId));
+  }
 
   return (
     <>
@@ -23,7 +33,7 @@ function NewModal() {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" onClick={handleDelete}>
             Remove
           </Button>
         </Modal.Footer>
