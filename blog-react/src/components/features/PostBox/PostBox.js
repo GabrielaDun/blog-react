@@ -6,7 +6,7 @@ import { Link} from 'react-router-dom';
 
 
 const PostBox = (props) => {
-    console.log(props.id);
+    console.log(props);
     return (
         <div>
             <h4>{props.title}</h4>

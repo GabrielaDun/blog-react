@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import { getPostsById } from '../../../redux/postsRedux';
 import { useParams } from 'react-router';
 import styles from './Page.module.scss'
+import NewModal from '../../features/Modal/Modal';
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
 const Page = () => {
@@ -18,8 +20,10 @@ const Page = () => {
                 <p>{listData.content}</p>
             </div>
             <div className={styles.subpage}>
-                <Link className={styles.button} to={'/post/edit/'+ id } >Edit</Link>
-                <Link className={styles.delate} to={'/post/edit/' + id}>Delate</Link>
+                <div className={styles.buttons}>
+                    <Link to={'/post/edit/'+ id } > <Button variant="primary">Edit</Button></Link>
+                    <NewModal >Delate</NewModal>
+                </div>
             </div>
 
         </div>
