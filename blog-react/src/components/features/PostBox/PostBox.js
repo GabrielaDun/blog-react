@@ -6,7 +6,7 @@ import { Link} from 'react-router-dom';
 
 
 const PostBox = (props) => {
-    console.log(props);
+    console.log(props.id);
     return (
         <div>
             <h4>{props.title}</h4>
@@ -17,7 +17,7 @@ const PostBox = (props) => {
             <p>Author: {props.author}</p>
             <p>Published: {props.publishedDate}</p>
             <p>{props.shortDescription}</p>
-            <Link className={styles.button}to={'/post/'+ props.id}><Button>Read more</Button></Link>
+            <Link className={styles.button} to={'/post/'+ props.id} ><Button>Read more</Button></Link>
         </div>
     )
 
