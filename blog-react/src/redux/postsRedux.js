@@ -4,7 +4,6 @@ export const getPostsById = ({ posts }, postId) => posts.find(post => post.id ==
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
-
 const DELETE_POST = createActionName('DELETE_POST')
 
 // action creators
@@ -16,7 +15,7 @@ const postsReducer = (statePart = [], action) => {
       return [...statePart.filter(posts => posts.id !== action.payload)]
     default:
       return statePart;
-  };
+  }; 
 };
 
 export default postsReducer;

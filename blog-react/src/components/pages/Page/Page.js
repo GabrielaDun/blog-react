@@ -9,9 +9,7 @@ import { Navigate } from 'react-router-dom';
 
 const Page = () => {
     const { id } = useParams();
-    console.log(id);
     const listData = useSelector(state => getPostsById(state, id));
-    console.log(listData);
 
     if(!listData) return <Navigate to="/" />
     else return (
@@ -28,7 +26,6 @@ const Page = () => {
                     <NewModal id={listData.id}>Delate</NewModal>
                 </div>
             </div>
-
         </div>
     )
 }
