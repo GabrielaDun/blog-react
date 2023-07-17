@@ -1,18 +1,24 @@
+import { addPost } from '../../../redux/postsRedux';
 import Button from '../Button/Button';
 import styles from './AddPostForm.module.scss';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const AddPostForm = () => {
 
+    const dispatch = useDispatch();
+
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
-    const [published, setPublished] = useState('');
+    const [publishedDate, setPublished] = useState('');
     const [shortDescription, setShortDescription] = useState('');
-    const [mainContent, setMainConetnt] = useState ('');
+    const [content, setMainConetnt] = useState ('');
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(title, author, published, shortDescription, mainContent);
+        dispatch(addPost({title, shortDescription, content, publishedDate, author}))
+
+        console.log(title, author, publishedDate, shortDescription, content);
         setTitle('');
         setAuthor('');
         setMainConetnt('');
@@ -28,11 +34,11 @@ const AddPostForm = () => {
         <p>Author</p>
         <input value = {author} onChange ={e => setAuthor(e.target.value)} type="text" className="author" placeholder=" Enter author" />
         <p>Published</p>
-        <input value= {published} onChange={e => setPublished(e.target.value)} type="date" className="date" />
+        <input value= {publishedDate} onChange={e => setPublished(e.target.value)} type="date" className="date" />
         <p>Short description</p>
         <textarea value = {shortDescription} onChange={e => setShortDescription(e.target.value)}id="exampleFormControlTextarea1"  className="description" placeholder=" Leave a short summery here"rows="1"></textarea>
         <p>Main contenet</p>
-        <textarea value={mainContent} onChange={e => setMainConetnt(e.target.value)} className="content" placeholder=" Write your blog here" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea value={content} onChange={e => setMainConetnt(e.target.value)} className="content" placeholder=" Write your blog here" id="exampleFormControlTextarea1" rows="3"></textarea>
         <Button>Add Post</Button>
     </form>
     )
