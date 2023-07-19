@@ -10,6 +10,7 @@ import { Navigate } from 'react-router-dom';
 const Page = () => {
     const { id } = useParams();
     const listData = useSelector(state => getPostsById(state, id));
+    console.log(id);
 
     if(!listData) return <Navigate to="/" />
     else return (

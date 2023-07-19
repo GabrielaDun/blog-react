@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import About from "./components/pages/About";
 import PageAdd from "./components/pages/PageAdd/PageAdd";
-import PageEdit from "./components/pages/PageEdit";
+import PageEdit from "./components/pages/PageEdit/PageEdit";
 import Page from "./components/pages/Page/Page";
 import Home from "./components/pages/Home/Home";
 import NotFound from "./components/pages/NotFound";
