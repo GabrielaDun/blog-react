@@ -8,8 +8,12 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import { useForm } from "react-hook-form";
+import { Form} from "react-bootstrap";
+
 const PostForm = ({action, actionText, ...props}) => {
 
+    const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     const [title, setTitle] = useState(props.title || '');
     const [author, setAuthor] = useState(props.author ||'');
@@ -18,7 +22,6 @@ const PostForm = ({action, actionText, ...props}) => {
     const [content, setMainConetnt] = useState (props.content ||'');
 
     const handleSubmit = e => {
-        e.preventDefault();
         action({title, author, publishedDate, shortDescription, content})
         setTitle('');
         setAuthor('');
@@ -29,14 +32,17 @@ const PostForm = ({action, actionText, ...props}) => {
     }
 
     return (
-    <form className={styles.root} onSubmit={handleSubmit}>
-        <p>Title</p>
-        <input 
-            value={title} 
-            onChange={e => setTitle (e.target.value)} 
-            type="title" 
-            className="title" 
-            placeholder=" Enter title" />
+    <form className={styles.root} onSubmit={validate(handleSubmit)}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            {...register("title", { required: true })}
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            type="text" placeholder="Enter title"
+          />
+          {errors.title && <span>This field is required</span>}
+        </Form.Group>
         <p>Author</p>
         <input 
             value={author} 
@@ -48,7 +54,7 @@ const PostForm = ({action, actionText, ...props}) => {
         <DatePicker
             value={publishedDate} 
             selected={publishedDate}
-            onChange={(date) => setPublished (date)} 
+            onChange={(date) => setPublished(date)} 
             type="date" 
             className="date" />
         <p>Short description</p>
