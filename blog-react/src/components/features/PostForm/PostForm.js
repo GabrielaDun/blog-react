@@ -5,6 +5,9 @@ import Button from '../Button/Button';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const PostForm = ({action, actionText, ...props}) => {
 
 
@@ -25,17 +28,36 @@ const PostForm = ({action, actionText, ...props}) => {
         console.log(title, author, publishedDate, shortDescription, content);
     }
 
-
     return (
     <form className={styles.root} onSubmit={handleSubmit}>
         <p>Title</p>
-        <input value={title} onChange={e => setTitle(e.target.value)} type="title" className="title" placeholder=" Enter title" />
+        <input 
+            value={title} 
+            onChange={e => setTitle (e.target.value)} 
+            type="title" 
+            className="title" 
+            placeholder=" Enter title" />
         <p>Author</p>
-        <input value={author} onChange ={e => setAuthor(e.target.value)} type="text" className="author" placeholder=" Enter author" />
+        <input 
+            value={author} 
+            onChange ={e => setAuthor(e.target.value)} 
+            type="text" 
+            className="author" 
+            placeholder=" Enter author" />
         <p>Published</p>
-        <input value={publishedDate} onChange={e => setPublished(e.target.value)} type="date" className="date" />
+        <DatePicker
+            value={publishedDate} 
+            selected={publishedDate}
+            onChange={(date) => setPublished (date)} 
+            type="date" 
+            className="date" />
         <p>Short description</p>
-        <textarea value={shortDescription} onChange={e => setShortDescription(e.target.value)}id="exampleFormControlTextarea1"  className="description" placeholder=" Leave a short summery here"rows="1" />
+        <textarea 
+            value={shortDescription} 
+            onChange={e => setShortDescription(e.target.value)}
+            className="description" 
+            placeholder=" Leave a short summery here"
+            rows="1" />
         <p>Main contenet</p>
         <ReactQuill 
             value={content} 

@@ -6,6 +6,7 @@ import NewModal from '../../features/Modal/Modal';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { dateToStr } from '../../../utils/dateToStr';
 
 const Page = () => {
     const { id } = useParams();
@@ -18,7 +19,7 @@ const Page = () => {
             <div >
                 <h2>{listData.title}</h2>
                 <p><span>Author: </span>{listData.author}</p>
-                <p><span>Published: </span>{listData.publishedDate}</p>
+                <p><span>Published: </span>{dateToStr(listData.publishedDate)}</p>
                 <p>Content:</p>
                 <p dangerouslySetInnerHTML={{ __html: listData.content }} />
             </div>

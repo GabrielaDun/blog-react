@@ -7,7 +7,7 @@ import { Link} from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div>
+        <div> 
             <div className={styles.homeContainer}>
                 <h3>All posts</h3>
                 <Link className={styles.button}to={'/post/add'}><Button>Add post</Button></Link>
