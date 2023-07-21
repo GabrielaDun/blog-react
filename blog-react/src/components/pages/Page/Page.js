@@ -19,7 +19,8 @@ const Page = () => {
                 <h2>{listData.title}</h2>
                 <p><span>Author: </span>{listData.author}</p>
                 <p><span>Published: </span>{listData.publishedDate}</p>
-                <p>{listData.content}</p>
+                <p>Content:</p>
+                <p dangerouslySetInnerHTML={{ __html: listData.content }} />
             </div>
             <div className={styles.subpage}>
                 <div className={styles.buttons}>
