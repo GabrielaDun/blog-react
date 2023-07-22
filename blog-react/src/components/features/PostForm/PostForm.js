@@ -20,15 +20,15 @@ const PostForm = ({action, actionText, ...props}) => {
     const [publishedDate, setPublished] = useState(props.publishedDate ||'');
     const [shortDescription, setShortDescription] = useState(props.shortDescription ||'');
     const [content, setMainConetnt] = useState (props.content ||'');
+    const [dateError, setDateError] = useState(false);
+    const [contentError, setContentError] = useState(false);
 
-    const handleSubmit = e => {
-        action({title, author, publishedDate, shortDescription, content})
-        setTitle('');
-        setAuthor('');
-        setMainConetnt('');
-        setShortDescription('');
-        setPublished('');
-        console.log(title, author, publishedDate, shortDescription, content);
+    const handleSubmit = () => {
+        setContentError(!content)
+        setDateError(!publishedDate)
+        if(content && publishedDate){
+            action({title, author, publishedDate, shortDescription, content})
+        }
     }
 
     return (
@@ -36,42 +36,56 @@ const PostForm = ({action, actionText, ...props}) => {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Title</Form.Label>
           <Form.Control
-            {...register("title", { required: true })}
+            {...register("title", { required: true, minLength: 3 })}
             value={title}
             onChange={e => setTitle(e.target.value)}
             type="text" placeholder="Enter title"
           />
-          {errors.title && <span>This field is required</span>}
+          {errors.title && <small className="d-block form-text text-danger mt-2">This field requires at least 3 characters.</small>}
+        </Form.Group >
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Author</Form.Label>
+            <Form.Control
+                {...register("author", {required: true, minLength: 3})}
+                value={author} 
+                onChange ={e => setAuthor(e.target.value)} 
+                type="text" 
+                placeholder=" Enter author" 
+            />
+            {errors.author&&<small className="d-block form-text text-danger mt-2">This field requires at least 3 characters.</small>}
         </Form.Group>
-        <p>Author</p>
-        <input 
-            value={author} 
-            onChange ={e => setAuthor(e.target.value)} 
-            type="text" 
-            className="author" 
-            placeholder=" Enter author" />
-        <p>Published</p>
-        <DatePicker
-            value={publishedDate} 
-            selected={publishedDate}
-            onChange={(date) => setPublished(date)} 
-            type="date" 
-            className="date" />
-        <p>Short description</p>
-        <textarea 
-            value={shortDescription} 
-            onChange={e => setShortDescription(e.target.value)}
-            className="description" 
-            placeholder=" Leave a short summery here"
-            rows="1" />
+            <p>Published</p>
+            <DatePicker
+                value={publishedDate} 
+                selected={publishedDate}
+                onChange={(date) => setPublished(date)} 
+                type="date" 
+                className="date" 
+            />
+            {dateError && <small className="d-block form-text text-danger mt-2">Date can't be empty</small>}
+        <Form.Group>
+            <Form.Label>Short description</Form.Label>
+            <Form.Control
+                {...register("description", {required: true, minLength: 20})}
+                value={shortDescription} 
+                onChange={e => setShortDescription(e.target.value)}
+                className="textarea" 
+                placeholder=" Leave a short summery here"
+                rows="1" 
+            />
+            {errors.author&&<small className="d-block form-text text-danger mt-2">This field requires at least 20 characters.</small>}
+        </Form.Group>
+            
         <p>Main contenet</p>
         <ReactQuill 
             value={content} 
             theme="snow" 
             onChange={setMainConetnt} 
-            className="content" 
+            className="textarea" 
             placeholder=" Write your blog here" 
-            rows="3" />
+            rows="3" 
+        />
+        {contentError && <small className="d-block form-text text-danger mt-2">Content can't be empty</small>}
         <Button>{actionText}</Button> 
     </form>
     )
