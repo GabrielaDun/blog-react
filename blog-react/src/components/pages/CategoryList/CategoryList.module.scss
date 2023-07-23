@@ -1,0 +1,18 @@
+.root {
+    display: flex;
+    justify-content: center;
+
+    .table {
+        border: solid 1px grey;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        .tab {
+            margin-top: 10px;
+            border: solid 1px grey;
+            padding: 20px;
+        }
+    }
+}

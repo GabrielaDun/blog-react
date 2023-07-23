@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import styles from './PostForm.module.scss';
-import Button from '../Button/Button';
+import Button from '../../common/Button/Button';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -65,7 +65,7 @@ const PostForm = ({action, actionText, ...props}) => {
         </Form.Group>
         <Form.Group>
             <Form.Label>Category</Form.Label>
-            <Form.Control
+            <Form.Select
                 {...register("category", {required: true})}
                 value={category}
                 onChange={e => setCategory(e.target.value)}
@@ -73,10 +73,11 @@ const PostForm = ({action, actionText, ...props}) => {
                 as="select"
                 placeholder="Enter title"
             >
+                <option>Select category...</option>
                 {categories?.map((option, index) => (
                     <option key={index} value={option}>{option}</option>
                 ))}
-            </Form.Control>
+            </Form.Select>
         </Form.Group>
             <p>Published</p>
             <DatePicker

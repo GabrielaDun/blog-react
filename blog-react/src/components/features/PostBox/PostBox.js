@@ -1,6 +1,6 @@
 ///import { Link } from 'react-router-dom';
 import styles from  './PostBox.module.scss';
-import Button from '../Button/Button';
+import Button from '../../common/Button/Button';
 import { Link} from 'react-router-dom';
 import { dateToStr } from '../../../utils/dateToStr';
 

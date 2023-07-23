@@ -1,5 +1,5 @@
 //import { Link } from 'react-router-dom';
-import Button from '../../features/Button/Button';
+import Button from '../../common/Button/Button';
 import Posts from '../../features/Posts/Posts';
 import styles from './Home.module.scss';
 import { Link} from 'react-router-dom';

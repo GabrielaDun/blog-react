@@ -8,6 +8,8 @@ import NotFound from "./components/pages/NotFound";
 import Header from "./components/views/Header";
 import Footer from "./components/views/Footer";
 import { Container } from "react-bootstrap";
+import CategoryList from "./components/pages/CategoryList/CategoryList";
+import CategoryPage from "./components/pages/CategoryPage/CategoryPage";
 
 
 
@@ -22,6 +24,8 @@ const App = () => {
           <Route path="/post/:id" element={<Page />} />
           <Route path="/post/add" element={<PageAdd />}  />
           <Route path="/post/edit/:id" element={<PageEdit />} />
+          <Route path="/category/:id" element={<CategoryPage />} />
+          <Route path="/category" element={<CategoryList />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
         <Footer />

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { getPostsById } from '../../../redux/postsRedux';
 import { useParams } from 'react-router';
 import styles from './Page.module.scss'
-import NewModal from '../../features/Modal/Modal';
+import NewModal from '../../common/Modal/Modal';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';

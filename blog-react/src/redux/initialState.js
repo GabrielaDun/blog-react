@@ -28,7 +28,7 @@ const initialState = {
             title: 'Running training guide',
             image: 'running',
             shortDescription: 'Finish strong... and safe! See a training plan that takes care of your joints as well as your speed!',
-            content: 'Main content of the article',
+            content: 'The triathlon is a grueling test of endurance, where competitors swim, cycle, and run consecutively. While each discipline is essential, the final run often determines a triathletes success. Here is a guide to preparing for the running leg of a triathlon. Understanding the Triathlon Run. The triathlon run is unlike a standalone running race. It follows an exhausting swim and bike ride. It’s not about how fast you can run, but rather how well you can maintain your running speed after depleting your energy reserves in the previous two stages.',
             publishedDate: new Date('03-03-2022'),
             category: 'Running',
             author: 'Sally Sprint'
@@ -46,7 +46,6 @@ const initialState = {
 
     ],
     categories: [
-        'Select a category...',
         'Running',
         'Swimming',
         'Cycling'

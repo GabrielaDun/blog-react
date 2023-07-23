@@ -9,6 +9,7 @@ const NavBar = () => {
                 <div className={styles.blogName}><p>Woman in Triathlon Blog</p></div>
                 <div className={styles.links}>
                     <NavLink className={styles.link} to="/">Home</NavLink>
+                    <NavLink className={styles.link} to="/category">Categories</NavLink>
                     <NavLink className={styles.link} to="/about">About</NavLink>
                 </div>
             </div>
