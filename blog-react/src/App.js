@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/post/:id" element={<Page />} />
           <Route path="/post/add" element={<PageAdd />}  />
           <Route path="/post/edit/:id" element={<PageEdit />} />
-          <Route path="/category/:id" element={<CategoryPage />} />
+          <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/category" element={<CategoryList />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
