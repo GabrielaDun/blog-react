@@ -1,3 +1,4 @@
+
 import { addPost } from '../../../redux/postsRedux';
 import PostForm from '../PostForm/PostForm';
 import { useDispatch } from 'react-redux';
@@ -13,7 +14,8 @@ const AddPostForm = () => {
     }
 
     return (
-    <PostForm action={handleSubmit} actionText='Add Post'/>
+    <PostForm action={handleSubmit} actionText='Add Post'> 
+    </PostForm>
     )
 }
 

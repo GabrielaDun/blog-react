@@ -18,9 +18,10 @@ const Page = () => {
         <div className={styles.page}>
             <div >
                 <h2>{listData.title}</h2>
-                <p><span>Author: </span>{listData.author}</p>
-                <p><span>Published: </span>{dateToStr(listData.publishedDate)}</p>
-                <p>Content:</p>
+                <p><b>Author: </b>{listData.author}</p>
+                <p><b>Published: </b>{dateToStr(listData.publishedDate)}</p>
+                <p><b>Category:</b> {listData.category}</p>
+                <p><b>Content:</b></p>
                 <p dangerouslySetInnerHTML={{ __html: listData.content }} />
             </div>
             <div className={styles.subpage}>

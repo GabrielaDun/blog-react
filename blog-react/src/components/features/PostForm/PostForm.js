@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import styles from './PostForm.module.scss';
 import Button from '../Button/Button';
 
@@ -10,6 +10,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { useForm } from "react-hook-form";
 import { Form} from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { getCategories } from '../../../redux/categoriesRedux';
 
 const PostForm = ({action, actionText, ...props}) => {
 
@@ -17,11 +19,18 @@ const PostForm = ({action, actionText, ...props}) => {
 
     const [title, setTitle] = useState(props.title || '');
     const [author, setAuthor] = useState(props.author ||'');
+    const [category, setCategory] = useState(props.category ||'');
     const [publishedDate, setPublished] = useState(props.publishedDate ||'');
     const [shortDescription, setShortDescription] = useState(props.shortDescription ||'');
     const [content, setMainConetnt] = useState (props.content ||'');
     const [dateError, setDateError] = useState(false);
     const [contentError, setContentError] = useState(false);
+
+    const categories = useSelector(getCategories);
+    console.log(categories);
+
+    const categoriesTwo = useSelector((state) => getCategories(state));
+    console.log(categoriesTwo);
 
     const handleSubmit = () => {
         setContentError(!content)
@@ -53,6 +62,21 @@ const PostForm = ({action, actionText, ...props}) => {
                 placeholder=" Enter author" 
             />
             {errors.author&&<small className="d-block form-text text-danger mt-2">This field requires at least 3 characters.</small>}
+        </Form.Group>
+        <Form.Group>
+            <Form.Label>Category</Form.Label>
+            <Form.Control
+                {...register("category", {required: true})}
+                value={category}
+                onChange={e => setCategory(e.target.value)}
+                type="dropdown"
+                as="select"
+                placeholder="Enter title"
+            >
+                {categories?.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                ))}
+            </Form.Control>
         </Form.Group>
             <p>Published</p>
             <DatePicker
