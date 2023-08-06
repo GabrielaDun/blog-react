@@ -10,10 +10,20 @@ import Footer from "./components/views/Footer";
 import { Container } from "react-bootstrap";
 import CategoryList from "./components/pages/CategoryList/CategoryList";
 import CategoryPage from "./components/pages/CategoryPage/CategoryPage";
+import { useDispatch } from "react-redux";
+import { fetchPost } from "./redux/postsRedux";
+import { useEffect } from "react";
+import { fetchCategories } from "./redux/categoriesRedux";
 
 
 
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => fetchPost(dispatch), [dispatch]);
+  useEffect(() => fetchCategories(dispatch), [dispatch]);
+
   return (
     <main>
       <Container>
